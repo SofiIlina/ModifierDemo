@@ -59,6 +59,7 @@ fun DemoScreen(modifier: Modifier = Modifier) {
     val mymodifier = modifier //кастомный модификатор
         .padding(all = 10.dp) //отступы 10 px со всех сторон
         .border(width = 2.dp, color = Color.Black) //черная рамка в 2 пикселя
+    val secondModifier = Modifier.height(100.dp)
     Column( //вертикальный контейнер
         Modifier.padding(20.dp), //отступы 20px
         horizontalAlignment = Alignment.CenterHorizontally, //горизонтальное центрирование
@@ -66,7 +67,7 @@ fun DemoScreen(modifier: Modifier = Modifier) {
     ){
         Text(
             "Hello Compose",
-            mymodifier,
+            mymodifier.then(secondModifier),
             fontSize = 40.sp, //размер 40 единиц
             fontWeight = FontWeight.Bold //жирный текст
         )
