@@ -71,15 +71,15 @@ fun DemoScreen(modifier: Modifier = Modifier) {
             fontSize = 40.sp, //размер 40 единиц
             fontWeight = FontWeight.Bold //жирный текст
         )
-    }
-    Spacer(Modifier.height(16.dp)) //пустое пространство 16px
-    CustomImage(R.drawable.vacation,
-        Modifier
-            .padding(16.dp)
-            .width(270.dp)
-            .clip(shape = RoundedCornerShape(30.dp)) //скругленные углы
+        Spacer(Modifier.height(16.dp)) //пустое пространство 16px
+        CustomImage(R.drawable.vacation,
+            Modifier
+                .padding(16.dp)
+                .width(270.dp)
+                .clip(shape = RoundedCornerShape(30.dp)) //скругленные углы
             //clip - обрезка
-    )//кастомное изображение из ресуросв
+        )//кастомное изображение из ресуросв
+    }
 }
 
 @Preview(showBackground = true) //предосмотр внутри студии
