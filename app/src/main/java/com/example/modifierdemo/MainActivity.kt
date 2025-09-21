@@ -16,8 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.*
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 
 
 class MainActivity : ComponentActivity() { //Activity, который является точкой входа в Android-приложение
@@ -37,20 +42,43 @@ class MainActivity : ComponentActivity() { //Activity, который являе
     }
 }
 
+@Composable
+fun CustomImage(image: Int,  modifier: Modifier = Modifier) {
+    //параметр модификатора необязательный, чтобы ф-ю можно было вызвать без него
+    Image(
+        painter = painterResource(image),
+        contentDescription = null,
+        modifier
+    )
+}
+
 @Composable //сегмент пользовательского интерфейа
 fun DemoScreen(modifier: Modifier = Modifier) {
     //функция принимает модификатор по умолчанию, что позволяет настраивать ее извне
 
-    val mymodifier = modifier
-        .border(width = 2.dp, color = Color.Black) //черная рамка в 2 пикселя
+    val mymodifier = modifier //кастомный модификатор
         .padding(all = 10.dp) //отступы 10 px со всех сторон
-
-    Text(
-        "Hello Compose",
-        modifier = mymodifier,
-        fontSize = 40.sp, //размер 40 единиц
-        fontWeight = FontWeight.Bold //жирный текст
-    )
+        .border(width = 2.dp, color = Color.Black) //черная рамка в 2 пикселя
+    Column( //вертикальный контейнер
+        Modifier.padding(20.dp), //отступы 20px
+        horizontalAlignment = Alignment.CenterHorizontally, //горизонтальное центрирование
+        verticalArrangement = Arrangement.Center // вертикальное центрирование
+    ){
+        Text(
+            "Hello Compose",
+            mymodifier,
+            fontSize = 40.sp, //размер 40 единиц
+            fontWeight = FontWeight.Bold //жирный текст
+        )
+    }
+    Spacer(Modifier.height(16.dp)) //пустое пространство 16px
+    CustomImage(R.drawable.vacation,
+        Modifier
+            .padding(16.dp)
+            .width(270.dp)
+            .clip(shape = RoundedCornerShape(30.dp)) //скругленные углы
+            //clip - обрезка
+    )//кастомное изображение из ресуросв
 }
 
 @Preview(showBackground = true) //предосмотр внутри студии
