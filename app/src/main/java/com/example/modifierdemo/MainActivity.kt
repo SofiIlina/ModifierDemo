@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() { //Activity, который являе
         super.onCreate(savedInstanceState)
         enableEdgeToEdge() // функция позволяет вашему контенту рисоваться под системными барами
         setContent { //функция с описанием интерфейса
-            ModifierDemoTheme { // сгенерированная тема приложения
+            ModifierDemoTheme() { // сгенерированная тема приложения
                 // Scaffold - макет для экрана
                 //innerPadding — автоматически рассчитанные отступы
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -61,7 +61,8 @@ fun DemoScreen(modifier: Modifier = Modifier) {
         .border(width = 2.dp, color = Color.Black) //черная рамка в 2 пикселя
     val secondModifier = Modifier.height(100.dp)
     Column( //вертикальный контейнер
-        Modifier.padding(20.dp), //отступы 20px
+        Modifier.padding(20.dp) //отступы 20px
+        .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally, //горизонтальное центрирование
         verticalArrangement = Arrangement.Center // вертикальное центрирование
     ){
@@ -85,7 +86,7 @@ fun DemoScreen(modifier: Modifier = Modifier) {
 @Preview(showBackground = true) //предосмотр внутри студии
 @Composable
 fun DefaultPreview() {
-    ModifierDemoTheme {
+    ModifierDemoTheme() {
         DemoScreen()
     }
 }
